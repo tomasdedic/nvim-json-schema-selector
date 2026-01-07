@@ -15,7 +15,7 @@ A Neovim plugin to select and insert YAML/JSON schema modelines from a local or 
 
 ```lua
 {
-  "tomasdedic/json-schema-selector.nvim",
+  "tomasdedic/nvim-json-schema-selector",
   dependencies = {
     "nvim-lua/plenary.nvim",
   },

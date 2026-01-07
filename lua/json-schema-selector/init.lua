@@ -66,6 +66,10 @@ M.toggle_local_schemas = function()
     config.local_schemas = not config.local_schemas
     M.setup(config)
 
+    -- Debug: Show the schema_url after toggle
+    print("DEBUG toggle: local_schemas = " .. tostring(config.local_schemas))
+    print("DEBUG toggle: schema_url = " .. M.schema_url)
+
     local mode = config.local_schemas and "LOCAL" or "REMOTE"
     vim.notify("Schema mode: " .. mode, vim.log.levels.INFO, { title = "JSON Schema Selector" })
 end
@@ -104,6 +108,11 @@ M.init = function()
 
         local schema_url = M.schema_url .. "/" .. selection
         local schema_modeline = "# yaml-language-server: $schema=" .. schema_url
+
+        -- Debug: Print what we're about to insert
+        print("DEBUG: schema_url = " .. schema_url)
+        print("DEBUG: schema_modeline = " .. schema_modeline)
+        print("DEBUG: local_schemas = " .. tostring(config.local_schemas))
 
         vim.api.nvim_buf_set_lines(0, 0, 0, false, { schema_modeline })
 

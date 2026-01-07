@@ -1,9 +1,10 @@
--- Example LazyVim configuration for json-schema-selector
+-- Example LazyVim configuration for nvim-json-schema-selector
 -- Place this in: ~/.config/nvim/lua/plugins/json-schema-selector.lua
 
 return {
-	dir = "/Users/ts/GIT/OPENSHIFT/json-schema-selector",
+	dir = "/Users/ts/GIT/OPENSHIFT/nvim-json-schema-selector",
 	name = "json-schema-selector",
+	ft = "yaml",  -- Only load for YAML files
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
@@ -24,7 +25,8 @@ return {
 		local_schemas = true,
 	},
 	keys = {
-		{ "<leader>js", "<cmd>JsonSchemaSelect<cr>", desc = "Select YAML Schema" },
+		{ "<leader>cs", "<cmd>JsonSchemaSelect<cr>", desc = "Select YAML Schema", ft = "yaml" },
+		{ "<leader>ct", "<cmd>JsonSchemaToggle<cr>", desc = "Toggle Local/Remote Schemas", ft = "yaml" },
 	},
 	config = function(_, opts)
 		require("json-schema-selector").setup(opts)

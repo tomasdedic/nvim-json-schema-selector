@@ -16,6 +16,7 @@ A Neovim plugin to select and insert YAML/JSON schema modelines from a local or 
 ```lua
 {
   "tomasdedic/nvim-json-schema-selector",
+  ft = "yaml",  -- Only load for YAML files
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
@@ -26,8 +27,8 @@ A Neovim plugin to select and insert YAML/JSON schema modelines from a local or 
     local_schemas = true,  -- Use local file paths (true) or GitHub URLs (false)
   },
   keys = {
-    { "<leader>cs", "<cmd>JsonSchemaSelect<cr>", desc = "Select YAML Schema" },
-    { "<leader>ct", "<cmd>JsonSchemaToggle<cr>", desc = "Toggle Local/Remote Schemas" },
+    { "<leader>js", "<cmd>JsonSchemaSelect<cr>", desc = "Select YAML Schema", ft = "yaml" },
+    { "<leader>jt", "<cmd>JsonSchemaToggle<cr>", desc = "Toggle Local/Remote Schemas", ft = "yaml" },
   },
 }
 ```
@@ -36,7 +37,8 @@ A Neovim plugin to select and insert YAML/JSON schema modelines from a local or 
 
 ```lua
 use {
-  "tomasdedic/json-schema-selector.nvim",
+  "tomasdedic/nvim-json-schema-selector",
+  ft = "yaml",  -- Only load for YAML files
   requires = { "nvim-lua/plenary.nvim" },
   config = function()
     require("json-schema-selector").setup({
@@ -53,16 +55,17 @@ use {
 
 ```lua
 {
-  dir = "~/path/to/json-schema-selector",
+  dir = "~/path/to/nvim-json-schema-selector",
   name = "json-schema-selector",
+  ft = "yaml",  -- Only load for YAML files
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {
     schemas_catalog_local_path = vim.fn.expand("~/GIT/OPENSHIFT/openshift-json-schema/4.19"),
     local_schemas = true,
   },
   keys = {
-    { "<leader>cs", "<cmd>JsonSchemaSelect<cr>", desc = "Select YAML Schema" },
-    { "<leader>ct", "<cmd>JsonSchemaToggle<cr>", desc = "Toggle Local/Remote Schemas" },
+    { "<leader>cs", "<cmd>JsonSchemaSelect<cr>", desc = "Select YAML Schema", ft = "yaml" },
+    { "<leader>ct", "<cmd>JsonSchemaToggle<cr>", desc = "Toggle Local/Remote Schemas", ft = "yaml" },
   },
 }
 ```
